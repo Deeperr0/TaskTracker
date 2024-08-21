@@ -33,5 +33,5 @@ Each task in the application is represented by the following properties:
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Deeperr0/TaskTracker.git
 cd TaskTracker
