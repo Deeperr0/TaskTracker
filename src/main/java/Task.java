@@ -1,12 +1,20 @@
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class Task {
     private final int id;
     private String description;
     private int status; // 0- "todo", 1- "in-progress", 2-"done"
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private final LocalDate createdAt;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate updatedAt;
-    public Task(int id, String description, int status, LocalDate createdAt, LocalDate updatedAt) {
+    public Task(@JsonProperty("id") int id, @JsonProperty("description") String description, @JsonProperty("status") int status, @JsonProperty("createdAt") LocalDate createdAt, @JsonProperty("updatedAt") LocalDate updatedAt) {
         this.id = id;
         this.description = description;
         this.status = status;

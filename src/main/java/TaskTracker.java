@@ -1,17 +1,35 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import java.io.File;
+import java.io.IOException;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 public class TaskTracker {
     public static void main(String[] args) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to TaskTracker!");
         System.out.println("You can start by using \"task-cli\" to explore the available commands:");
         ArrayList<Task> taskList = new ArrayList<Task>();
+        try {
+            taskList = objectMapper.readValue(new File("taskList.json"), new TypeReference<ArrayList<Task>>(){});
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
         while(true) {
             String userInput = input.nextLine();
             if(userInput.equals("exit")) {
-                System.exit(0);
+                try {
+                    objectMapper.writeValue(new File("taskList.json"), taskList);
+                    break;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             else if (userInput.equals("task-cli") || userInput.startsWith("task-cli --help")) {
                 printUsage();
@@ -86,8 +104,9 @@ public class TaskTracker {
                     }
                 }
             }
-
         }
+        input.close();
+        System.exit(0);
     }
     private static void printUsage() {
         System.out.println("Usage: task-cli <command> [<args>]");
