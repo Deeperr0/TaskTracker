@@ -2,7 +2,8 @@
 
 ## Overview
 
-**TaskTracker** is a command-line tool built in Java that allows you to manage and track your tasks efficiently. This application helps you keep track of what needs to be done, what you're currently working on, and what you've already completed. Tasks are stored in a JSON file for persistence, allowing you to manage them even after closing the application.
+**TaskTracker** is a command-line tool built in Java that allows you to manage and track your tasks efficiently. This application helps you keep track of what needs to be done, what you're currently working on, and what you've already completed. Tasks are stored in a JSON file for persistence, allowing you to manage them even after closing the application. This project was done as per the guidelines suggest by roadmap.sh
+Link to the project: [https://roadmap.sh/projects/task-tracker](https://roadmap.sh/projects/task-tracker)
 
 ## Features
 
