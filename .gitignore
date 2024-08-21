@@ -1,3 +1,7 @@
+### JSON file
+taskList.json
+
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -5,8 +9,6 @@ target/
 
 
 
-### JSON file
-taskList.json
 
 
 ### IntelliJ IDEA ###
@@ -42,3 +44,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+
